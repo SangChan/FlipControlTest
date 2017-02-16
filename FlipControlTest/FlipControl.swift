@@ -46,13 +46,13 @@ class FlipControl: UIView {
         self.layer.borderColor = UIColor.darkGray.cgColor
         self.layer.borderWidth = 0.5
         
-        let tapGestureRecognizer : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tabed(_:)))
+        //let tapGestureRecognizer : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tabed(_:)))
         
-        self.addGestureRecognizer(tapGestureRecognizer)
+        //self.addGestureRecognizer(tapGestureRecognizer)
         
     }
     
-    func tabed(_ tapGestureRecognizer: UITapGestureRecognizer) {
+    func fliped() {
         self.timer += 1
         let newbackView = FlipView(text: "\(timer)", frame: CGRect(x: 0, y: 0, width: self.frame.size.width * 0.9, height: self.frame.size.height*0.9))
         newbackView.center = CGPoint(x: self.frame.size.width/2, y: self.frame.size.height/2)
@@ -60,7 +60,6 @@ class FlipControl: UIView {
         let frontView = self.subviews.first as! FlipView
         
         self.bringSubview(toFront: frontView)
-        
         
         var skewedIdentityTransform : CATransform3D = CATransform3DIdentity
         skewedIdentityTransform.m34 = 1.0 / -1000;
@@ -77,17 +76,27 @@ class FlipControl: UIView {
         
         newbackView.bottomFlip.layer.transform = CATransform3DRotate(skewedIdentityTransform, CGFloat(M_PI_2), 1, 0, 0)
         
-        UIView.animate(withDuration: 1.0, animations: {
+        UIView.animate(withDuration: 0.5, animations: {
             frontView.topFlip.layer.transform = CATransform3DRotate(skewedIdentityTransform, -CGFloat(M_PI_2), 1, 0, 0)
         }) { (end) in
             self.addSubview(newbackView)
-            UIView.animate(withDuration: 1.0, animations: {
+            UIView.animate(withDuration: 0.5, animations: {
                 newbackView.bottomFlip.layer.transform = CATransform3DRotate(skewedIdentityTransform,0, 1, 0, 0)
             }) { (end) in
                 frontView.removeFromSuperview()
+                if end {
+                    self.fliped()
+                }
             }
             
         }
+    }
+    
+    func tabed(_ tapGestureRecognizer: UITapGestureRecognizer) {
+        
+        
+        
+        
     }
 
 }

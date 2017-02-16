@@ -15,6 +15,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.flipControl.fliped()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
