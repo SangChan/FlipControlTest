@@ -16,6 +16,7 @@ class FlipControl: UIView {
     let zDepth = 1000
     
     var timer = 1
+    var startTime : NSDate!
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -37,6 +38,7 @@ class FlipControl: UIView {
     }
     
     fileprivate func initializer() {
+        self.startTime = NSDate()
         self.backgroundColor = UIColor.black
         
         let frontView = FlipView(text: "\(timer)", frame: CGRect(x: 0, y: 0, width: self.frame.size.width * 0.9, height: self.frame.size.height*0.9))
