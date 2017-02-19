@@ -9,14 +9,15 @@
 import UIKit
 
 class FlipControl: UIView {
+    fileprivate var hFlip : FlipView!
+    fileprivate var mFlip : FlipView!
+    fileprivate var sFlip : FlipView!
     
-    var flipTime = 1.0
-    var maxiumTime = 3600
-    let duration = 1.0
     let zDepth = 1000
     
     var timer = 1
-    var startTime : NSDate!
+    var startTime : Date!
+    var endTime : Date!
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -38,7 +39,8 @@ class FlipControl: UIView {
     }
     
     fileprivate func initializer() {
-        self.startTime = NSDate()
+        self.startTime = Date()
+        self.endTime = Date()
         self.backgroundColor = UIColor.black
         
         let frontView = FlipView(text: "\(timer)", frame: CGRect(x: 0, y: 0, width: self.frame.size.width * 0.9, height: self.frame.size.height*0.9))
@@ -92,13 +94,6 @@ class FlipControl: UIView {
             }
             
         }
-    }
-    
-    func tabed(_ tapGestureRecognizer: UITapGestureRecognizer) {
-        
-        
-        
-        
     }
 
 }
