@@ -39,11 +39,14 @@ class FlipControl: UIView {
     }
     
     fileprivate func initializer() {
+        
         self.startTime = Date()
-        self.endTime = Date()
+        self.endTime = Date(timeInterval: TimeInterval(60), since: self.startTime)
+        timer = Calendar.current.dateComponents([.second], from: self.startTime, to: self.endTime).second ?? 0
+        
         self.backgroundColor = UIColor.black
         
-        let frontView = FlipView(text: "\(timer)", frame: CGRect(x: 0, y: 0, width: self.frame.size.width * 0.9, height: self.frame.size.height*0.9))
+        let frontView = FlipView(number: timer, frame: CGRect(x: 0, y: 0, width: self.frame.size.width * 0.9, height: self.frame.size.height*0.9))
         frontView.center = CGPoint(x: self.frame.size.width/2, y: self.frame.size.height/2)
         self.addSubview(frontView)
         
@@ -57,8 +60,8 @@ class FlipControl: UIView {
     }
     
     func fliped() {
-        self.timer += 1
-        let newbackView = FlipView(text: "\(timer)", frame: CGRect(x: 0, y: 0, width: self.frame.size.width * 0.9, height: self.frame.size.height*0.9))
+        self.timer -= 1
+        let newbackView = FlipView(number: timer, frame: CGRect(x: 0, y: 0, width: self.frame.size.width * 0.9, height: self.frame.size.height*0.9))
         newbackView.center = CGPoint(x: self.frame.size.width/2, y: self.frame.size.height/2)
         
         let frontView = self.subviews.first as! FlipView
@@ -103,9 +106,9 @@ class FlipView : UIView {
     var bottomFlip : UIImageView!
     var text : String!
     
-    convenience init(text: String, frame:CGRect) {
+    convenience init(number: Int, frame:CGRect) {
         self.init(frame:frame)
-        self.text = text
+        self.text = String(format: "%02d", number)
         initializer()
     }
     
@@ -143,7 +146,7 @@ class FlipView : UIView {
         self.addSubview(lowerView)
         
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
-        label.font = UIFont.systemFont(ofSize: 120)
+        label.font = UIFont.systemFont(ofSize: 90)
         label.textAlignment = .center
         label.text = text
         label.textColor = UIColor.darkGray
