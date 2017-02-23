@@ -34,7 +34,7 @@ class FlipControl: UIView {
     }
     
     fileprivate func initializer() {
-        self.backgroundColor = UIColor.white
+        self.backgroundColor = UIColor.clear
         
         let panelWidth = self.frame.size.width / 3
         let panelOriginY =  (self.frame.size.height/2) - (panelWidth/2)
@@ -101,7 +101,7 @@ private class FlipPanel: UIView {
 
     convenience init(panelType : FlipPanelType,frame: CGRect) {
         self.init(frame: frame)
-        self.backgroundColor = UIColor.white
+        self.backgroundColor = UIColor.clear
         self.panelType = panelType
         self.value = 0
         self.initializer()
@@ -214,8 +214,8 @@ private class FlipView: UIView {
         self.addSubview(label)
         
         self.layer.cornerRadius = 3.0
-        
+        self.layer.masksToBounds = true
         self.layer.borderColor = UIColor.lightGray.cgColor
-        self.layer.borderWidth = 1.0
+        self.layer.borderWidth = 0.5
     }
 }

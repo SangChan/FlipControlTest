@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,17 +23,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="67e-LG-cfR" customClass="FlipControl" customModule="FlipControlTest" customModuleProvider="target">
-                                <rect key="frame" x="12.5" y="133.5" width="350" height="400"/>
+                                <rect key="frame" x="36" y="133.5" width="303" height="400"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="400" id="1jM-4Q-gUL"/>
-                                    <constraint firstAttribute="width" constant="350" id="bTO-bh-T1T"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="67e-LG-cfR" secondAttribute="bottom" constant="133.5" id="4OI-Bo-paY"/>
                             <constraint firstItem="67e-LG-cfR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Hr1-7K-hrZ"/>
+                            <constraint firstItem="67e-LG-cfR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="Q4i-DE-oTa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="67e-LG-cfR" secondAttribute="trailing" constant="20" id="WpT-db-fr3"/>
+                            <constraint firstItem="67e-LG-cfR" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="113.5" id="efN-kl-P9r"/>
                             <constraint firstItem="67e-LG-cfR" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="lZ2-ga-A1U"/>
                         </constraints>
                     </view>
