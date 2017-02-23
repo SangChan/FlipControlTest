@@ -14,11 +14,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.flipControl.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.flipControl.fliped()
+        //self.flipControl.fliped()
+        self.flipControl.endTime = Date(timeInterval: TimeInterval(30), since: Date())
+        self.flipControl.start()
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,5 +30,11 @@ class ViewController: UIViewController {
     }
 
 
+}
+
+extension ViewController: FlipControlDelegate {
+    func flipControl(flipControl: FlipControl, isDoneAt: Date) {
+        print("Boom!")
+    }
 }
 

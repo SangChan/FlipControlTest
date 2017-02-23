@@ -22,11 +22,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="67e-LG-cfR" customClass="FlipControl" customModule="FlipControlTest" customModuleProvider="target">
-                                <rect key="frame" x="87" y="233.5" width="200" height="200"/>
+                                <rect key="frame" x="12.5" y="133.5" width="350" height="400"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="1jM-4Q-gUL"/>
-                                    <constraint firstAttribute="width" constant="200" id="bTO-bh-T1T"/>
+                                    <constraint firstAttribute="height" constant="400" id="1jM-4Q-gUL"/>
+                                    <constraint firstAttribute="width" constant="350" id="bTO-bh-T1T"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -42,6 +42,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="141.59999999999999" y="138.98050974512745"/>
         </scene>
     </scenes>
 </document>
