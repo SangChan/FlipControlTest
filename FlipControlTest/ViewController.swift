@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         //self.flipControl.fliped()
-        self.flipControl.endTime = Date(timeInterval: TimeInterval(30), since: Date())
+        self.flipControl.endTime = Date(timeInterval: TimeInterval(3801), since: Date())
         self.flipControl.start()
     }
 
