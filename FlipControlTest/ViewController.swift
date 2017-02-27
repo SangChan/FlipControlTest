@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.view.backgroundColor = UIColor(red: 245/255.0, green: 242/255.0, blue: 240/255.0, alpha: 1.0)
         self.flipControl.delegate = self
     }
     

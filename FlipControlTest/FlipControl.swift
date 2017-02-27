@@ -182,11 +182,11 @@ private class FlipPanel: UIView {
             
             newBackFlipView.bottomFlip.layer.transform = CATransform3DRotate(skewedIdentityTransform, CGFloat(M_PI_2), 1, 0, 0)
             
-            UIView.animate(withDuration: 0.15, animations: {
+            UIView.animate(withDuration: 0.2, animations: {
                 frontFlipView.topFlip.layer.transform = CATransform3DRotate(skewedIdentityTransform, -CGFloat(M_PI_2), 1, 0, 0)
             }) { (end) in
                 self.addSubview(newBackFlipView)
-                UIView.animate(withDuration: 0.15, animations: {
+                UIView.animate(withDuration: 0.2, animations: {
                     newBackFlipView.bottomFlip.layer.transform = CATransform3DRotate(skewedIdentityTransform,0, 1, 0, 0)
                 }) { (end) in
                     frontFlipView.removeFromSuperview()
@@ -278,6 +278,12 @@ private class FlipView: UIView {
         label.textColor = UIColor.black
         label.backgroundColor = UIColor.clear
         self.addSubview(label)
+        
+        self.layer.cornerRadius = 3.0
+        self.layer.masksToBounds = true
+        self.layer.borderColor = UIColor.lightGray.cgColor
+        self.layer.borderWidth = 0.5
+        
         snapshot()
         
         if topFlip != nil  && bottomFlip != nil {
@@ -287,12 +293,14 @@ private class FlipView: UIView {
             
             self.addSubview(topFlip)
             self.addSubview(bottomFlip)
+            
+            self.layer.cornerRadius = 0.0
+            self.layer.masksToBounds = false
+            self.layer.borderColor = UIColor.clear.cgColor
+            self.layer.borderWidth = 0.0
         }
         
-        self.layer.cornerRadius = 3.0
-        self.layer.masksToBounds = true
-        self.layer.borderColor = UIColor.lightGray.cgColor
-        self.layer.borderWidth = 0.5
+        
     }
     
     fileprivate func snapshot() {
