@@ -15,6 +15,7 @@ protocol FlipControlDelegate : class {
 class FlipControl: UIView {
     weak var delegate : FlipControlDelegate?
     var endTime : Date!
+    var totalCounter : Int = 0
     
     fileprivate var timer : Timer!
     fileprivate var hPanel : FlipPanel!
@@ -49,11 +50,11 @@ class FlipControl: UIView {
     
     func start() {
         let startTime = Date()
-        let secondForTimer : Int = Calendar.current.dateComponents([.second], from: startTime, to: self.endTime).second ?? 0
+        totalCounter = Calendar.current.dateComponents([.second], from: startTime, to: self.endTime).second ?? 0
         
-        let hourCounter   = secondForTimer / 3600
-        let minuteCounter = (secondForTimer - (hourCounter * 3600)) / 60
-        let secondCounter = secondForTimer - (hourCounter * 3600) - (minuteCounter * 60)
+        let hourCounter   = totalCounter / 3600
+        let minuteCounter = (totalCounter - (hourCounter * 3600)) / 60
+        let secondCounter = totalCounter - (hourCounter * 3600) - (minuteCounter * 60)
         
         self.hPanel.value = hourCounter
         self.mPanel.value = minuteCounter
@@ -66,7 +67,28 @@ class FlipControl: UIView {
     }
     
     func doFlip() {
-        self.sPanel.doFlip()
+        totalCounter -= 1
+        
+        let hourCounter   = totalCounter / 3600
+        let minuteCounter = (totalCounter - (hourCounter * 3600)) / 60
+        let secondCounter = totalCounter - (hourCounter * 3600) - (minuteCounter * 60)
+        
+        if self.hPanel.value != hourCounter {
+            self.hPanel.value = hourCounter
+            self.hPanel.doFlip()
+        }
+        if self.mPanel.value != minuteCounter {
+            self.mPanel.value = minuteCounter
+            self.mPanel.doFlip()
+        }
+        if self.sPanel.value != secondCounter {
+            self.sPanel.value = secondCounter
+            self.sPanel.doFlip()
+        }
+        
+        if totalCounter <= 0 {
+            stop()
+        }
     }
     
     func stop() {
@@ -88,7 +110,6 @@ private class FlipPanel: UIView {
     fileprivate var panelType : FlipPanelType!
     fileprivate var superFlipPanel : FlipPanel?
     var value : Int = 0
-    //var timer : Timer?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -122,35 +143,23 @@ private class FlipPanel: UIView {
     }
     
     func start() {
-        guard self.value > 0 else { return }
         if let frontFlipView = self.getFlipView() {
             frontFlipView.removeFromSuperview()
         }
         doFlip()
-        //timer = Timer.scheduledTimer(timeInterval: self.timeInterval(fromPanelType: self.panelType), target: self, selector: #selector(doFlip), userInfo: nil, repeats: true)
     }
     
     func stop() {
-        //guard timer != nil else { return }
-        //timer?.invalidate()
-        superFlipPanel?.stop()
     }
     
     
     func doFlip() {
-        if value == maximumValue(fromPanelType: self.panelType) {
-            superFlipPanel?.doFlip()
-        }
-        
         let flipOrigin = self.bounds.size.height * 0.2
         let flipSize   = self.bounds.size.height * 0.8
-        print("try at #\(value)")
         
         let newBackFlipView = FlipView(text: String(format: "%02d", value), frame:CGRect(x: flipOrigin/2, y: flipOrigin, width: flipSize, height: flipSize))
-        value = decreaseValue()
         
         if let frontFlipView = self.getFlipView() {
-            print("get Front as #\(frontFlipView.text)")
             self.bringSubview(toFront: frontFlipView)
             
             var skewedIdentityTransform : CATransform3D = CATransform3DIdentity
@@ -160,26 +169,22 @@ private class FlipPanel: UIView {
             let copiedTopFlipFromBackView = UIImageView(image: newBackFlipView.topFlip.image)
             copiedTopFlipFromBackView.frame = newBackFlipView.topFlip.frame
             frontFlipView.insertSubview(copiedTopFlipFromBackView, belowSubview: frontFlipView.topFlip)
-            print("frontView#\(frontFlipView.text) insert backView#\(newBackFlipView.text)'s topFlip")
             
             newBackFlipView.prepareToswingBottomFlip()
             let copiedBottomFlipFromFrontView = UIImageView(image: frontFlipView.bottomFlip.image)
             copiedBottomFlipFromFrontView.frame = frontFlipView.bottomFlip.frame
             newBackFlipView.insertSubview(copiedBottomFlipFromFrontView, belowSubview: frontFlipView.bottomFlip)
-            print("backView#\(newBackFlipView.text) insert fronView#\(frontFlipView.text)'s bottomFlip")
             
             newBackFlipView.bottomFlip.layer.transform = CATransform3DRotate(skewedIdentityTransform, CGFloat(M_PI_2), 1, 0, 0)
             
-            UIView.animate(withDuration: 0.4, animations: {
+            UIView.animate(withDuration: 0.15, animations: {
                 frontFlipView.topFlip.layer.transform = CATransform3DRotate(skewedIdentityTransform, -CGFloat(M_PI_2), 1, 0, 0)
             }) { (end) in
                 self.addSubview(newBackFlipView)
-                print("add #\(newBackFlipView.text)")
-                UIView.animate(withDuration: 0.4, animations: {
+                UIView.animate(withDuration: 0.15, animations: {
                     newBackFlipView.bottomFlip.layer.transform = CATransform3DRotate(skewedIdentityTransform,0, 1, 0, 0)
                 }) { (end) in
                     frontFlipView.removeFromSuperview()
-                    print("remove #\(frontFlipView.text)")
                     if (end) {
                         copiedBottomFlipFromFrontView.removeFromSuperview()
                     }
@@ -189,7 +194,6 @@ private class FlipPanel: UIView {
             
         }else {
             self.addSubview(newBackFlipView)
-            print("add #\(newBackFlipView.text)")
         }
         
     }
@@ -203,26 +207,6 @@ private class FlipPanel: UIView {
         return nil
     }
     
-    func decreaseValue() -> Int{
-        var tempValue : Int = value
-        tempValue -= 1
-        if tempValue < 0 {
-            tempValue = maximumValue(fromPanelType: self.panelType)
-        }
-        return tempValue
-    }
-    
-    func timeInterval(fromPanelType:FlipPanelType) -> TimeInterval {
-        switch fromPanelType {
-        case FlipPanelType.second:
-            return 1.0
-        case FlipPanelType.minute:
-            return 60.0
-        default:
-            return 3600.0
-        }
-    }
-    
     func string(fromPanelType:FlipPanelType) -> String {
         switch fromPanelType {
         case FlipPanelType.second:
@@ -234,14 +218,6 @@ private class FlipPanel: UIView {
         }
     }
     
-    func maximumValue(fromPanelType:FlipPanelType) -> Int {
-        switch fromPanelType {
-        case FlipPanelType.hour:
-            return 0
-        default:
-            return 59
-        }
-    }
 }
 
 private class FlipView: UIView {
@@ -264,7 +240,6 @@ private class FlipView: UIView {
         self.backgroundColor = UIColor.clear
         self.text = text
         initializer(text: text)
-        print("\(text) is created")
     }
     
     func prepareToswingTopFlip() {
