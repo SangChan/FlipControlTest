@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var restartButton: UIButton!
     @IBOutlet weak var flipControl: FlipControl!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,11 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func buttonClicked(_ sender: Any) {
+        self.flipControl.stop()
+        let random = arc4random() % 640
+        self.flipControl.startWith(endTime: Date(timeInterval: TimeInterval(random), since: Date()))
+    }
 
 }
 

@@ -48,6 +48,11 @@ class FlipControl: UIView {
         self.addSubview(sPanel)
     }
     
+    func startWith(endTime : Date) {
+        self.endTime = endTime
+        start()
+    }
+    
     func start() {
         let startTime = Date()
         totalCounter = Calendar.current.dateComponents([.second], from: startTime, to: self.endTime).second ?? 0
@@ -63,10 +68,10 @@ class FlipControl: UIView {
         self.hPanel.start()
         self.mPanel.start()
         self.sPanel.start()
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(doFlip), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.doFlip), userInfo: nil, repeats: true)
     }
     
-    func doFlip() {
+    @objc fileprivate func doFlip() {
         totalCounter -= 1
         
         let hourCounter   = totalCounter / 3600

@@ -29,15 +29,25 @@
                                     <constraint firstAttribute="width" constant="303" id="rp0-oe-oee"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pgc-yR-uOG">
+                                <rect key="frame" x="168" y="51" width="39" height="30"/>
+                                <state key="normal" title="Reset"/>
+                                <connections>
+                                    <action selector="buttonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a85-yc-kmY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="67e-LG-cfR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Hr1-7K-hrZ"/>
+                            <constraint firstItem="pgc-yR-uOG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Z9z-b7-1p1"/>
+                            <constraint firstItem="pgc-yR-uOG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="31" id="cNa-s3-NLx"/>
                             <constraint firstItem="67e-LG-cfR" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="lZ2-ga-A1U"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="flipControl" destination="67e-LG-cfR" id="w7u-f1-xqV"/>
+                        <outlet property="restartButton" destination="pgc-yR-uOG" id="I4P-7Z-nm4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
