@@ -178,7 +178,7 @@ private class FlipPanel: UIView {
             newBackFlipView.prepareToswingBottomFlip()
             let copiedBottomFlipFromFrontView = UIImageView(image: frontFlipView.bottomFlip.image)
             copiedBottomFlipFromFrontView.frame = frontFlipView.bottomFlip.frame
-            newBackFlipView.insertSubview(copiedBottomFlipFromFrontView, belowSubview: frontFlipView.bottomFlip)
+            newBackFlipView.insertSubview(copiedBottomFlipFromFrontView, belowSubview: newBackFlipView.bottomFlip)
             
             newBackFlipView.bottomFlip.layer.transform = CATransform3DRotate(skewedIdentityTransform, CGFloat(M_PI_2), 1, 0, 0)
             
@@ -189,10 +189,8 @@ private class FlipPanel: UIView {
                 UIView.animate(withDuration: 0.2, animations: {
                     newBackFlipView.bottomFlip.layer.transform = CATransform3DRotate(skewedIdentityTransform,0, 1, 0, 0)
                 }) { (end) in
+                    copiedBottomFlipFromFrontView.removeFromSuperview()
                     frontFlipView.removeFromSuperview()
-                    if (end) {
-                        copiedBottomFlipFromFrontView.removeFromSuperview()
-                    }
                 }
                 
             }
