@@ -155,6 +155,13 @@ private class FlipPanel: UIView {
     }
     
     func stop() {
+        for prevFlipView in self.subviews {
+            if prevFlipView is FlipView {
+                prevFlipView.removeFromSuperview()
+            }
+        }
+        value = 0
+        doFlip()
     }
     
     
