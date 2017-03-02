@@ -22,18 +22,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="67e-LG-cfR" customClass="FlipControl" customModule="FlipControlTest" customModuleProvider="target">
-                                <rect key="frame" x="36" y="133.5" width="303" height="400"/>
+                                <rect key="frame" x="77.5" y="133.5" width="220" height="400"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="400" id="o3f-13-E0e"/>
-                                    <constraint firstAttribute="width" constant="303" id="rp0-oe-oee"/>
+                                    <constraint firstAttribute="width" constant="220" id="rp0-oe-oee"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pgc-yR-uOG">
-                                <rect key="frame" x="168" y="51" width="39" height="30"/>
-                                <state key="normal" title="Reset"/>
+                                <rect key="frame" x="172" y="51" width="32" height="30"/>
+                                <state key="normal" title="start"/>
                                 <connections>
                                     <action selector="buttonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a85-yc-kmY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rnV-b1-Vyu">
+                                <rect key="frame" x="172" y="89" width="31" height="30"/>
+                                <state key="normal" title="stop"/>
+                                <connections>
+                                    <action selector="stopClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jhY-yo-Wy3"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -42,6 +49,8 @@
                             <constraint firstItem="67e-LG-cfR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Hr1-7K-hrZ"/>
                             <constraint firstItem="pgc-yR-uOG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Z9z-b7-1p1"/>
                             <constraint firstItem="pgc-yR-uOG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="31" id="cNa-s3-NLx"/>
+                            <constraint firstItem="rnV-b1-Vyu" firstAttribute="top" secondItem="pgc-yR-uOG" secondAttribute="bottom" constant="8" id="gfM-qt-IKk"/>
+                            <constraint firstItem="rnV-b1-Vyu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ian-Nv-yQf"/>
                             <constraint firstItem="67e-LG-cfR" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="lZ2-ga-A1U"/>
                         </constraints>
                     </view>

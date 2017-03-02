@@ -36,6 +36,9 @@ class ViewController: UIViewController {
         let random = arc4random() % 640
         self.flipControl.startWith(endTime: Date(timeInterval: TimeInterval(random), since: Date()))
     }
+    @IBAction func stopClicked(_ sender: Any) {
+        self.flipControl.stop()
+    }
 
 }
 
