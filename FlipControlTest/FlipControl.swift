@@ -137,7 +137,7 @@ private class FlipPanel: UIView {
         let label = UILabel(frame: CGRect(x:0, y: 0, width: self.frame.size.width, height: self.frame.size.height * 0.2))
         label.textAlignment = .center
         label.text = string(fromPanelType: self.panelType)
-        label.font = UIFont.systemFont(ofSize: label.frame.size.height * 0.6)
+        label.font = UIFont(name: "HelveticaNeueLTPro-Roman", size: label.frame.size.height * 0.8)
         self.addSubview(label)
         
         let flipOrigin = self.bounds.size.height * 0.2
@@ -277,7 +277,7 @@ private class FlipView: UIView {
         self.addSubview(lowerView)
         
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
-        label.font = UIFont.systemFont(ofSize: frame.size.height * 0.5)
+        label.font = UIFont.systemFont(ofSize: label.frame.size.height * 0.35)
         label.textAlignment = .center
         label.text = text
         label.textColor = UIColor.black

@@ -13,6 +13,7 @@
 		630509C71E518DE6001A01A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 630509C61E518DE6001A01A8 /* Assets.xcassets */; };
 		630509CA1E518DE6001A01A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 630509C81E518DE6001A01A8 /* LaunchScreen.storyboard */; };
 		630509D21E518E12001A01A8 /* FlipControl1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630509D11E518E12001A01A8 /* FlipControl1.swift */; };
+		63B7E5BB1E67FC5D00116EC1 /* HelveticaNeueLTPro-Roman.otf in Resources */ = {isa = PBXBuildFile; fileRef = 63B7E5BA1E67FC5D00116EC1 /* HelveticaNeueLTPro-Roman.otf */; };
 		63FC02091E5E8E61004A749C /* FlipControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FC02081E5E8E61004A749C /* FlipControl.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		630509C91E518DE6001A01A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		630509CB1E518DE6001A01A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		630509D11E518E12001A01A8 /* FlipControl1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlipControl1.swift; sourceTree = "<group>"; };
+		63B7E5BA1E67FC5D00116EC1 /* HelveticaNeueLTPro-Roman.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "HelveticaNeueLTPro-Roman.otf"; path = "FlipControlTest/HelveticaNeueLTPro-Roman.otf"; sourceTree = "<group>"; };
 		63FC02081E5E8E61004A749C /* FlipControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlipControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -42,6 +44,7 @@
 		630509B31E518DE6001A01A8 = {
 			isa = PBXGroup;
 			children = (
+				63B7E5BA1E67FC5D00116EC1 /* HelveticaNeueLTPro-Roman.otf */,
 				630509BE1E518DE6001A01A8 /* FlipControlTest */,
 				630509BD1E518DE6001A01A8 /* Products */,
 			);
@@ -129,6 +132,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63B7E5BB1E67FC5D00116EC1 /* HelveticaNeueLTPro-Roman.otf in Resources */,
 				630509CA1E518DE6001A01A8 /* LaunchScreen.storyboard in Resources */,
 				630509C71E518DE6001A01A8 /* Assets.xcassets in Resources */,
 				630509C51E518DE6001A01A8 /* Main.storyboard in Resources */,

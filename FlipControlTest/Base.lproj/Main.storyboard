@@ -8,6 +8,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeueLTPro-Roman.otf">
+            <string>HelveticaNeueLTPro-Roman</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -30,14 +35,16 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pgc-yR-uOG">
-                                <rect key="frame" x="172" y="51" width="32" height="30"/>
+                                <rect key="frame" x="171" y="51" width="34" height="29"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeueLTPro-Roman" family="Helvetica Neue LT Pro" pointSize="17"/>
                                 <state key="normal" title="start"/>
                                 <connections>
                                     <action selector="buttonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a85-yc-kmY"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rnV-b1-Vyu">
-                                <rect key="frame" x="172" y="89" width="31" height="30"/>
+                                <rect key="frame" x="170.5" y="88" width="34" height="29"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeueLTPro-Roman" family="Helvetica Neue LT Pro" pointSize="17"/>
                                 <state key="normal" title="stop"/>
                                 <connections>
                                     <action selector="stopClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jhY-yo-Wy3"/>
