@@ -161,7 +161,7 @@ private class FlipPanel: UIView {
             }
         }
         value = 0
-        doFlip()
+        //doFlip()
     }
     
     
