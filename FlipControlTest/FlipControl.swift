@@ -172,7 +172,7 @@ private class FlipPanel: UIView {
         let newBackFlipView = FlipView(text: String(format: "%02d", value), frame:CGRect(x: flipOrigin/2, y: flipOrigin, width: flipSize, height: flipSize))
         
         if let frontFlipView = self.getFlipView() {
-            self.bringSubview(toFront: frontFlipView)
+            self.bringSubviewToFront(frontFlipView)
             
             var skewedIdentityTransform : CATransform3D = CATransform3DIdentity
             skewedIdentityTransform.m34 = 1.0 / -1000;
@@ -187,10 +187,10 @@ private class FlipPanel: UIView {
             copiedBottomFlipFromFrontView.frame = frontFlipView.bottomFlip.frame
             newBackFlipView.insertSubview(copiedBottomFlipFromFrontView, belowSubview: newBackFlipView.bottomFlip)
             
-            newBackFlipView.bottomFlip.layer.transform = CATransform3DRotate(skewedIdentityTransform, CGFloat(M_PI_2), 1, 0, 0)
+            newBackFlipView.bottomFlip.layer.transform = CATransform3DRotate(skewedIdentityTransform, CGFloat(Double.pi/2), 1, 0, 0)
             
             UIView.animate(withDuration: 0.2, animations: {
-                frontFlipView.topFlip.layer.transform = CATransform3DRotate(skewedIdentityTransform, -CGFloat(M_PI_2), 1, 0, 0)
+                frontFlipView.topFlip.layer.transform = CATransform3DRotate(skewedIdentityTransform, -CGFloat(Double.pi/2), 1, 0, 0)
             }) { (end) in
                 self.addSubview(newBackFlipView)
                 UIView.animate(withDuration: 0.2, animations: {
